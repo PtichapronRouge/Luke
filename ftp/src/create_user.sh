@@ -5,19 +5,20 @@
 # $3 -> sel du mdp
 # $4 -> type de hash (1 pour le md5 etc...)
 
-if [ ! -n $1 ]; then
+if [ -z $1 ]; then
 	echo "Erreur : nom d'utilisateur requis"
 else
+	echo "Generation de l utilisateur $1 ..."
 	mkdir -p /home/ftpusers/"$1"
 	cd /home/ftpusers/"$1"
 	mkdir -p private public_html logs
-	chown "$1" *
+	chown ftpuser *
 	chown root .
-	chgrp ftpuser *
+	chgrp ftpgroup *
 	chgrp root .
 	
-	if [ -n $2 ]; then
-		hashmdp="\$$4\$3\$$2"
+	if [ ! -z $2 ]; then
+		hashmdp="\$$4\$$3\$$2"
 	else
 		hashmdp=`openssl passwd -1 password`
 	fi
