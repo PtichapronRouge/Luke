@@ -17,7 +17,7 @@ else
 	chgrp root .
 	
 	if [ -n $2 ]; then
-		hashmdp="\$$3\$$2\$$3"
+		hashmdp="\$$4\$3\$$2"
 	else
 		hashmdp=`openssl passwd -1 password`
 	fi
