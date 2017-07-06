@@ -1,5 +1,0 @@
-FROM stilliard/pure-ftpd:latest
-
-COPY src/* /root/
-ENV PUBLICHOST localhost
-
