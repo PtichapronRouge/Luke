@@ -19,5 +19,5 @@ else
 	pure-pw mkdb /etc/pure-ftpd/pureftpd.pdb -f /etc/pure-ftpd/passwd/pureftpd.passwd
 
 	echo "Modification des droits sur les fichers..."
-	`pwd`/change_droits.sh "$1"
+	/root/change_droits.sh "$1"
 fi
