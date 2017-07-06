@@ -7,7 +7,7 @@ COPY src/* /root/
 ENV PUBLICHOST localhost
 
 #Les volumes à lier
-VOLUMES ["/etc/pure-ftpd/passwd", "/home/ftpusers", "/etc/ssl/private"]
+VOLUME ["/etc/pure-ftpd/passwd", "/home/ftpusers", "/etc/ssl/private"]
 
 #Les ports à lier
 EXPOSE 21 30000-30009
