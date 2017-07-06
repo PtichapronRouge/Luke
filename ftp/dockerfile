@@ -1,5 +1,14 @@
 FROM stilliard/pure-ftpd:latest
 
+#Se trouvent dans src/ les fichiers utiles a root pour gérer les users
 COPY src/* /root/
+
+#Remplacer localhost par le nom du serveur
 ENV PUBLICHOST localhost
+
+#Les volumes à lier
+VOLUMES ["/etc/pure-ftpd/passwd", "/home/ftpusers", "/etc/ssl/private"]
+
+#Les ports à lier
+EXPOSE 21 30000-30009
 
