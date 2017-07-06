@@ -9,6 +9,6 @@ ENV PUBLICHOST localhost
 #Les volumes à lier
 VOLUME ["/etc/pure-ftpd/passwd", "/home/ftpusers", "/etc/ssl/private"]
 
-#Les ports à lier
-EXPOSE 21 30000-30009
+#Expose 21 
+#Expose 30000-30009
 
