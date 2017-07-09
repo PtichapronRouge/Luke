@@ -6,9 +6,6 @@ COPY src/* /root/
 #Remplacer localhost par le nom du serveur
 ENV PUBLICHOST localhost
 
-#Les volumes à lier
-VOLUME ["/etc/pure-ftpd/passwd", "/home/ftpusers", "/etc/ssl/private"]
-
-#Expose 21 
-#Expose 30000-30009
+Expose 21 
+Expose 30000-30009
 
