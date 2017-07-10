@@ -15,8 +15,8 @@ RUN apt-get install -y \
     && docker-php-et-install -j$(nproc) mbstring
 
 
-COPY files/* /var/www/html
-
 VOLUME ["/var/www/html"]
+
+COPY files/* /var/www/html
 
 EXPOSE 80
