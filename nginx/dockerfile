@@ -1,11 +1,5 @@
 FROM nginx
 
-#RUN apt-get install -y openssl
-
-#RUN openssl genrsa -out nginx.key 2048
-#RUN openssl req -new -key nginx.key -out nginx.csr
-#RUN openssl x509 -req -days 365 -in nginx.csr -signkey nginx.key -out nginx.crt
-
-COPY files/conf.d/* /etc/nginx/conf.d
+VOLUME ["/etc/nginx/certificats", "/etc/nginx/conf.d", "/etc/nginx/sites-available"]
 
 EXPOSE 80
