@@ -1,5 +1,5 @@
 FROM nginx
 
-
+COPY files/conf.d/* /etc/nginx/conf.d
 
 EXPOSE 80
