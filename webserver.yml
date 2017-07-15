@@ -1,0 +1,30 @@
+version: "3"
+services:
+  ftp:
+    image: ftpbuild:latest
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    ports: 
+      - "21:21"
+      - "30000-30009:30000-30009"
+    networks:
+      - ftp_nw
+  
+  nginx:
+    image: nginxbuild:latest
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - proxy_nw
+
+networks:
+  ftp_nw:
+  proxy_nw:
+  
