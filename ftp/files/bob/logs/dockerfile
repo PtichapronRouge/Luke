@@ -4,7 +4,7 @@ FROM stilliard/pure-ftpd:latest
 COPY src/* /root/
 
 #Remplacer localhost par le nom du serveur
-ENV PUBLICHOST docker1.larez.fr
+ENV PUBLICHOST localhost
 
 Expose 21 
 Expose 30000-30009
