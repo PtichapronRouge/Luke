@@ -1,1 +1,0 @@
-/etc/pure-ftpd/passwd/pure-ftpd.passwd IN_MODIFY pure-pw mkdb /etc/pure-ftpd/pureftpd.pdb -f /etc/pure-ftpd/passwd/pureftpd.passwd

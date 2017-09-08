@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 # feel free to change this ;)
-MAINTAINER Andrew Stilliard <andrew.stilliard@gmail.com>
+MAINTAINER Benjamin Mouscadet <benjamin.mouscadet@supelec.fr>
 
 # properly setup debian sources
 ENV DEBIAN_FRONTEND noninteractive
@@ -20,9 +20,6 @@ RUN apt-get -y --force-yes --fix-missing install dpkg-dev debhelper
 # install dependancies
 RUN apt-get -y build-dep pure-ftpd
 
-# install incron for auto rebuilding database
-RUN apt-get -y install incron
-RUN echo root >> /etc/incron.allow
 
 # build from source
 RUN mkdir /tmp/pure-ftpd/ && \
@@ -52,9 +49,6 @@ RUN apt-get install -y rsyslog && \
 	echo "ftp.* /var/log/pure-ftpd/pureftpd.log" >> /etc/rsyslog.conf && \
 	echo "Updated /etc/rsyslog.conf with /var/log/pure-ftpd/pureftpd.log"
 
-# setup automatic rebuild of database
-COPY src/test_incron /etc/incron.d
-COPY src/rebuild_database /etc/incron.d
 
 # setup run/init file
 COPY src/run.sh /run.sh
@@ -67,6 +61,6 @@ ENV PUBLICHOST localhost
 VOLUME ["/home/ftpusers", "/etc/pure-ftpd/passwd"]
 
 # startup
-CMD /run.sh -c 5 -C 5 -l puredb:/etc/pure-ftpd/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
+CMD /run.sh -c 5 -C 5 -l puredb:/etc/pure-ftpd/database/pureftpd.pdb -E -j -R -P $PUBLICHOST -p 30000:30009
 
 EXPOSE 21 30000-30009
